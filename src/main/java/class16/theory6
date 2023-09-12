@@ -1,0 +1,17 @@
+Changing Field Names: Avoid changing the names of fields in your class between versions. If you rename a field, the deserialization process will not be able to map the serialized data to the new field name.
+
+Changing Field Types: Avoid changing the data type of a field between versions. If you change a field from, say, an int to a String, it can lead to deserialization errors or data corruption.
+
+Removing Fields: Removing fields from a class between versions can cause issues during deserialization. If older serialized data expects a field that no longer exists in the class, it can result in InvalidClassException.
+
+Adding Non-Serializable Fields: If you add non-serializable fields to a class that was previously serializable, you need to ensure that these fields are properly initialized or marked as transient. Otherwise, deserialization can lead to unexpected behavior.
+
+Changing the Hierarchy: Avoid changing the class hierarchy (e.g., changing the superclass or implementing different interfaces) between versions. It can lead to compatibility issues if the serialized data expects a different class structure.
+
+Changing the Serialization Protocol: The serialization protocol itself should not be changed, as it will affect how the data is serialized and deserialized. This includes changing the serialVersionUID or the serialization mechanism used (e.g., switching from Java's default serialization to a custom serialization format).
+
+Changing Enum Constants: Enum constants should not be reordered or removed between versions, as their ordinal values may change. This can lead to issues if ordinal values are used for serialization.
+
+Changing Method Signatures: Avoid changing the signatures of methods that are involved in the serialization process, such as writeObject and readObject. Changing these methods can affect how objects are serialized and deserialized.
+
+Changing the Class Name: Changing the fully qualified class name between versions can lead to issues when deserializing data serialized with the previous class name.
