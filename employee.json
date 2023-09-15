@@ -1,1 +1,5 @@
-{"firstName":"John","lastName":"Doe","employeeId":12345}
+{
+  "firstName":"John",
+  "lastName":"Doe",
+  "employeeId":12345
+}
